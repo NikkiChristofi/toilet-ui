@@ -31,11 +31,11 @@ function App() {
   const handleOnChildMouseLeave = (event) => {
     console.log('hover leave!', event)
   }
-
+  
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyASpank-mc7rMHuFCII7W6ZYuBmtWgyfjM' }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={{lat: 51.5310981, lng: -0.1145346}}
         defaultZoom={13.33}
         onChildClick={handleOnChildClick}
