@@ -27,7 +27,7 @@ function App() {
   }
 
   const handleOnChildMouseEnter = (event) => {
-    setHoveredFacility(event)
+    setHoveredFacility(event === activefacility ? null : event)
   }
 
   const handleOnChildMouseLeave = (event) => {
