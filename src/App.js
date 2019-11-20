@@ -7,6 +7,7 @@ import Marker from './Marker'
 function App() {
   const [facilities, setFacilities] = useState([]);
   const [activefacility, setActiveFacility] = useState(null);
+  const [hoveredFacility, setHoveredFacility] = useState(null);
   
   const handleFacilities = (facilities) => {
     setFacilities(facilities);
@@ -21,15 +22,16 @@ function App() {
   }, [facilities.length]);
 
   const handleOnChildClick = (event) => {
-    setActiveFacility(event)
+    setActiveFacility(event === activefacility ? null : event)
+    setHoveredFacility(null)
   }
 
   const handleOnChildMouseEnter = (event) => {
-    console.log('hover enter!', event)
+    setHoveredFacility(event)
   }
 
   const handleOnChildMouseLeave = (event) => {
-    console.log('hover leave!', event)
+    setHoveredFacility(null)
   }
   
   return (
@@ -50,6 +52,7 @@ function App() {
             lat={facility.location[0]}
             lng={facility.location[1]}
             showBalloon={activefacility === facility.id}
+            showHoverBalloon={hoveredFacility === facility.id}
             color='blue'
           ></Marker>
         ))

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Balloon from './Balloon'
+import HoverBalloon from './HoverBalloon'
 import './marker.css'
 
-function Marker({facility, color, showBalloon}) {
+function Marker({ facility, color, showBalloon, showHoverBalloon }) {
   const { name } = facility
 
   return (
@@ -12,7 +14,8 @@ function Marker({facility, color, showBalloon}) {
         title={name}
       />
       <div className="pulse" />
-      {showBalloon && <div>BALLOOOOOON</div>}
+      {showBalloon && <Balloon facility={facility} />}
+      {showHoverBalloon && <HoverBalloon facility={facility} />}
     </div>
   )
 }
